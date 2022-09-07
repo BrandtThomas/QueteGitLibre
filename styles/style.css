@@ -2,8 +2,15 @@ body{
     background: rgb(1,2,10);
     background: linear-gradient(180deg, rgba(1,2,10,1) 0%, rgba(6,20,102,1) 100%);
     background-attachment: fixed;
+
 }
 
 .navBarCss{
     background-color: black;
+}
+.jumbotron, .bg-dark .img{
+background-image: url(../img/extrait/shrekExtrait.jpg);
+height: 700px;
+background-position: center;
+background-size: cover;
 }
