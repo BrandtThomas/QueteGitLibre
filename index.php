@@ -40,6 +40,32 @@
     <button type="button" class="btn btn-outline-info mx-3">Log In</button>
 </div>
 </nav>
+    
+    <div class="jumbotron">
+   <img src="./img/extrait/shrekExtrait.jpg" alt=""  width="1000" height="500"  >
+</div>
+<div class="content">
+    <div class="card">
+    <img src="./img/extrait/kungFuPandaExtrait.jpg" alt=""  width="300" height="200" >
+    </div>
+</div>
+<div class="content">
+    <div class="card">
+    <img src="./img/extrait/mulanExtrait.jpg" alt=""  width="300" height="200" >
+    </div>
+</div>
+
+<div class="content">
+    <div class="card">
+    <img src="./img/extrait/onePieceExtrait.jpg" alt=""  width="300" height="200" >
+    </div>
+</div>
+
+<div class="content">
+    <div class="card">
+    <img src="./img/extrait/rebelExtrait.jpg" alt=""  width="300" height="200" >
+    </div>
+</div>
 
 
 
