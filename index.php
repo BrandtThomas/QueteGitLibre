@@ -70,7 +70,7 @@
 </section>
 
 <footer>
-&copy;St2mflix
+<p class="text-center mt-3 footerColor">&copy;St2mflix</p>
 </footer>
 
 
