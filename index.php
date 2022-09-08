@@ -1,3 +1,4 @@
+<?php $db = new PDO('mysql:host=localhost;dbname=quetegit','root','') ; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -40,36 +41,190 @@
     <button type="button" class="btn btn-outline-info mx-3">Log In</button>
 </div>
 </nav>
-  
-<div class="jumbotron bg-dark">
-</div>
-<section class="container-fluid">
-    <div class="row justify-content-around">
-        <div class="content1">
-            <div class="card">
-            <img src="./img/extrait/kungFuPandaExtrait.jpg" alt=""  width="300" height="200" >
+
+
+
+
+<?php 
+    if(isset($_GET['id'])){
+    $sql = "SELECT * FROM item WHERE id = :id";
+            $prepare=$db->prepare($sql);
+            $prepare->execute(
+                [
+                    'id' => $_GET['id']
+                ]
+            );
+            $list = $prepare->fetch();
+        ?>
+
+        <section class="container-fluid mt-5 pt-5">
+                <div class="row justify-content-center">
+                    <div class="col-3">
+                    <img class="col-12" src="<?php echo $list['image'] ;?>" alt=""> 
+                    </div>
+                    <div class="col-4 text-center">
+                    <p class="text-light"><?php echo 'titre: ' . $list['titre']; ?></p>
+                    <p class="text-light"><?php echo 'description: ' . $list['description']; ?></p>
+                    <p class="text-light"><?php echo 'redirection: ' . $list['redirection']; ?></p>
+                    <p class="text-light"><?php echo 'studio: ' . $list['studio']; ?></p>
+                    <p class="text-light"><?php echo 'Id : ' . $list['id']; ?></p>
+                    <a href="?modifier&item=<?php echo $list['id'] ?>"><button class="btn btn-dark" name="modifier">Modifier</button></a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Supprimer</button>
+                    </div>
+                </div>
+        </section>
+            <?php
+}
+    else if (isset($_GET['studio'])) {
+        // DreamWorks
+            if ($_GET['studio'] == "dreamworks"){
+                $sql = "SELECT * FROM item WHERE studio = :studio";
+                $prepare=$db->prepare($sql);
+                $prepare->execute(
+                    [
+                        'studio' => "DreamWorks Animation"
+                    ]
+                );
+                $list = $prepare->fetchall(); ?>
+                <section class="mt-5 pt-5">
+                <div class=" row justify-content-center">
+                    <?php
+                foreach ($list as $value){ ?>
+                    <div class="col-2 m-3" >
+                    <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="250" alt="">
+                    </div>
+                <?php } 
+                ?>
+                </div>
+                </section>
+                <?php }
+            
+            // pixar
+
+            if ($_GET['studio'] == "pixar"){
+                $sql = "SELECT * FROM item WHERE studio = :studio";
+                $prepare=$db->prepare($sql);
+                $prepare->execute(
+                    [
+                        'studio' => "Pixar"
+                    ]
+                );
+                $list = $prepare->fetchall(); ?>
+                <section class="mt-5 pt-5">
+                <div class=" row justify-content-center">
+                    <?php
+                foreach ($list as $value){ ?>
+                    <div class="col-2 m-3" >
+                    <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="250" alt="">
+                    </div>
+                <?php } 
+                ?>
+                </div>
+                </section>
+                <?php }
+
+                    // disney
+
+            if ($_GET['studio'] == "disney"){
+                $sql = "SELECT * FROM item WHERE studio = :studio";
+                $prepare=$db->prepare($sql);
+                $prepare->execute(
+                    [
+                        'studio' => "Disney"
+                    ]
+                );
+                $list = $prepare->fetchall(); ?>
+                <section class="mt-5 pt-5">
+                <div class=" row justify-content-center">
+                    <?php
+                foreach ($list as $value){ ?>
+                    <div class="col-2 m-3" >
+                    <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="250" alt="">
+                    </div>
+                <?php } 
+                ?>
+                </div>
+                </section>
+                <?php }
+
+
+                    // ankama
+                if ($_GET['studio'] == "ankama"){
+                    $sql = "SELECT * FROM item WHERE studio = :studio";
+                    $prepare=$db->prepare($sql);
+                    $prepare->execute(
+                        [
+                            'studio' => "Ankama"
+                        ]
+                    );
+                    $list = $prepare->fetchall(); ?>
+                    <section class="mt-5 pt-5">
+                    <div class=" row justify-content-center">
+                        <?php
+                    foreach ($list as $value){ ?>
+                        <div class="col-2 m-3" >
+                        <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="250" alt="">
+                        </div>
+                    <?php } 
+                    ?>
+                    </div>
+                    </section>
+                    <?php }
+
+
+                        // toei
+                if ($_GET['studio'] == "toei"){
+                    $sql = "SELECT * FROM item WHERE studio = :studio";
+                    $prepare=$db->prepare($sql);
+                    $prepare->execute(
+                        [
+                            'studio' => "Toei Animation"
+                        ]
+                    );
+                    $list = $prepare->fetchall(); ?>
+                    <section class="mt-5 pt-5">
+                    <div class=" row justify-content-center">
+                        <?php
+                    foreach ($list as $value){ ?>
+                        <div class="col-2 m-3" >
+                        <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="250" alt="">
+                        </div>
+                    <?php } 
+                    ?>
+                    </div>
+                    </section>
+                    <?php }
+            
+
+           
+            }
+    else { 
+        ?>
+        <div class="jumbotron bg-dark">
+        </div>
+        <section class="container">
+            <div class="row text-center" >
+        <?php
+
+            $sql= 'SELECT * FROM item';
+            $prepare = $db->prepare($sql);
+            $prepare->execute();
+            $liste = $prepare->fetchALL();
+            foreach ($liste as $value){ ?>
+            <div class="col-2 m-3" >
+            <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="150" alt="">
             </div>
-        </div>
-    <div class="content2">
-        <div class="card">
-        <img src="./img/extrait/mulanExtrait.jpg" alt=""  width="300" height="200" >
-        </div>
-    </div>
-    <div class="content3">
-        <div class="card">
-        <img src="./img/extrait/onePieceExtrait.jpg" alt=""  width="300" height="200" >
-        </div>
-    </div>
+        <?php } 
+        ?>
+            </div>
+        </section>
+        <?php }
+        ?>
 
-    <div class="content4">
-        <div class="card">
-        <img src="./img/extrait/rebelExtrait.jpg" alt=""  width="300" height="200" >
-        </div>
-    </div>
-</div>
-</section>
 
-<footer>
+
+
+<footer class="fixed-bottom">
 <p class="text-center mt-3 footerColor">&copy;St2mflix</p>
 </footer>
 
