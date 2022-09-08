@@ -8,8 +8,9 @@ body{
 .navBarCss{
     background-color: black;
 }
-.jumbotron, .bg-dark .img{
-background-image: url(../img/extrait/shrekExtrait.jpg);
+
+.imgBackground{
+
 height: 700px;
 background-position: center;
 background-size: cover;
@@ -17,4 +18,10 @@ background-size: cover;
 
 .footerColor{
     color: #bdc4ea;
+}
+
+footer{
+    background-color: black;
+    height: 40px;
+    opacity: 0.9;
 }
