@@ -36,10 +36,11 @@
                         <div>
                             <a href="<?php echo $list['redirection']; ?>"><button class="btn btn-warning" name="modifier">Voir le film</button></a>        
                         </div>
-                        <div>
+                        <form action="index.php" method="POST">
                             <a href="?modifyId=<?php echo $list['id'] ?>"><button class="btn btn-primary" name="modifier">Modifier</button></a>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Supprimer</button>   
-                        </div>
+                            <input type="hidden" name="valeurId" value="<?php echo $list["id"]; ?>">
+                            <input type="submit" name="del" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal" value="Supprimer"></input>   
+                        </form>
                     </div>             
                     
                     
@@ -412,6 +413,18 @@
 
     }
 
+?>
+<?php
+
+if(isset($_POST['del'])){
+    $sql = "DELETE FROM `item` WHERE `id`= :id";
+    $prepare = $db->prepare($sql);
+    $prepare->execute([
+
+        'id' => $_POST['valeurId']
+  ]
+);
+}
 ?>
 
 <footer class="fixed-bottom">
