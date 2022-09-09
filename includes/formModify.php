@@ -63,7 +63,7 @@
 
     <div class="col-12 mb-3">   
         <label class="text-light col-12" >Image extrait du film</label>
-        <input class="text-light" type="file" name="fileToUpload">
+        <input class="text-light" type="file" name="fileToUpload2">
     </div>
 
         

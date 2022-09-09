@@ -316,6 +316,103 @@
     }
 
 ?>
+<?php 
+    if (isset($_POST['filmButtonModify'])){
+
+        $target_dirAffiche = "img/affiche/";
+        $target_fileAffiche = $target_dirAffiche . basename($_FILES["fileToUpload"]["name"]);
+        $target_dirExtrait = "img/extrait/";
+        $target_fileExtrait = $target_dirExtrait . basename($_FILES["fileToUpload2"]["name"]);
+        $uploadOk = 1;
+        $imageFileTypeAffiche = strtolower(pathinfo($target_fileAffiche,PATHINFO_EXTENSION));
+        $imageFileTypeExtrait = strtolower(pathinfo($target_fileExtrait,PATHINFO_EXTENSION));
+       // vérification si le fichier existe déjà
+       if (file_exists($target_fileAffiche)) {
+        ?>
+        <div class="alert alert-danger text-center" role="alert">
+        Le fichier existe déjà.
+        </div><br>
+    <?php
+    $uploadOk = 0;
+    }
+    if (file_exists($target_fileExtrait)) {
+        ?>
+        <div class="alert alert-danger text-center" role="alert">
+        Le fichier existe déjà.
+        </div><br>
+    <?php
+    $uploadOk = 0;
+    }
+    // Vérification de la taille du fichier
+    if ($_FILES["fileToUpload"]["size"] > 5000000) {
+        ?>
+        <div class="alert alert-danger text-center" role="alert">
+        La taille du fichier est trop importante.
+        </div><br>
+    <?php
+    
+    $uploadOk = 0;
+    }
+    if ($_FILES["fileToUpload2"]["size"] > 5000000) {
+        ?>
+        <div class="alert alert-danger text-center" role="alert">
+        La taille du fichier est trop importante.
+        </div><br>
+    <?php
+    
+    $uploadOk = 0;
+    }
+    // Autorisation seulement de certain format de fichier
+    if($imageFileTypeAffiche != "jpg" && $imageFileTypeAffiche != "png" && $imageFileTypeAffiche != "jpeg"
+    && $imageFileTypeAffiche != "gif" ) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+        Seulement les fichiers JPG, JPEG, PNG et GIF sont autorisés
+        </div><br>
+    <?php
+    
+    $uploadOk = 0;
+    }
+    if($imageFileTypeExtrait != "jpg" && $imageFileTypeExtrait != "png" && $imageFileTypeExtrait != "jpeg"
+    && $imageFileTypeExtrait != "gif" ) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+        Seulement les fichiers JPG, JPEG, PNG et GIF sont autorisés
+        </div><br>
+    <?php
+    
+    $uploadOk = 0;
+    }
+    // Vérification si $upload n'est pas à 0 (envoie message d'erreur)
+    if ($uploadOk == 0) { ?>
+        <div class="alert alert-danger text-center" role="alert">
+        Le fichier n'a pas été envoyé.
+        </div>
+    <?php
+    // Si tout est ok, alors le fichier est uploadé dans le bon dossier
+    } 
+    else {
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_fileAffiche) && move_uploaded_file($_FILES["fileToUpload2"]["tmp_name"], $target_fileExtrait)) { ?>
+    
+        <div class="alert alert-success text-center mb-5" role="alert">
+        Le film a été ajouté avec succès !
+        </div>
+    <?php
+            $sqlQuery = "UPDATE `item` SET `id`= :id, `titre`= :titre, `description`= :description, `redirection`= :redirection, `studio`= :studio, `image`= :image, `imageExtrait`= :imageExtrait WHERE `id` = :id2";
+            $insertSQL = $db->prepare($sqlQuery);
+            $insertSQL->execute([
+                "id" => $_POST['idFilmModify'],
+                "titre" => $_POST['titreModify'],
+                "description" => $_POST['descriptionModify'],
+                "redirection" => $_POST['lienRedirectionModify'],
+                "studio" => $_POST['nomStudioModify'],
+                "image" => 'img/affiche/' . basename($_FILES["fileToUpload"]["name"]),
+                "imageExtrait" => 'img/extrait/' . basename($_FILES["fileToUpload2"]["name"]),
+                "id2" => $_POST['idFilmModify']
+            ]);
+        }}
+
+    }
+
+?>
 
 <footer class="fixed-bottom">
 <p class="text-center mt-3 footerColor">&copy;St2mflix</p>
