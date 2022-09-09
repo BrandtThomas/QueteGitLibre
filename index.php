@@ -186,6 +186,33 @@
         include 'includes/formModify.php';
     }
 
+    else if (isset($_GET['recherche'])) { ?>
+        <SEction class='container mt-5 pt-5'>
+            <div class="row justify-content-center ">
+                 <?php
+        $nomRecherche = $_GET['recherche'];
+        $sql= 'SELECT * FROM item WHERE titre LIKE :titre';
+        $prepare = $db->prepare($sql);
+        $prepare->execute(
+            [
+                'titre' => '%' . $nomRecherche . '%'
+            ]
+        );
+    
+        $liste = $prepare->fetchALL();
+        foreach ($liste as $value){ ?>
+        <div class="col-3 m-3 text-center" >
+        <a href="?id=<?php echo $value['id'] ; ?>"><img src="<?php echo $value['image'] ?>" height="300"  alt=""></a>
+        </div>
+    <?php } 
+    ?>
+            </div>
+        </SEction>
+        
+       <?php
+
+    }
+
     else { 
         $idRandom = rand(1,20);
         $sql = "SELECT * FROM item WHERE id = :id";

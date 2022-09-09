@@ -24,8 +24,8 @@
         <a href="?studio=toei"><img src="img/ressources/toeiLogo.png" height="40" alt="Logo DreamWorks"></a>
         </li>
     </ul>
-    <form class="form-inline my-2 my-md-0">
-        <input class="form-control" type="text" placeholder="Recherche">
+    <form method="GET" class="form-inline my-2 my-md-0">
+        <input class="form-control" name="recherche" type="search" placeholder="Recherche">
     </form>
         <a href="?addFilm=addForm"><button type="button" class="btn btn-outline-info mx-3">Ajouter</button></a>
     <!-- Le bouton login sera a faire après <button type="button" class="btn btn-outline-info mx-3">Log In</button> -->
