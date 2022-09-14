@@ -24,28 +24,25 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `auteur`
+-- Structure de la table `utilisateur`
 --
 
-DROP TABLE IF EXISTS `auteur`;
-CREATE TABLE IF NOT EXISTS `auteur` (
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `studio` varchar(64) NOT NULL,
-  `style` varchar(64) NOT NULL,
-  `photo` varchar(64) NOT NULL,
+  `username` varchar(56) NOT NULL,
+  `password` varchar(56) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
 
 --
--- Déchargement des données de la table `auteur`
+-- Déchargement des données de la table `utilisateur`
 --
 
-INSERT INTO `auteur` (`id`, `studio`, `style`, `photo`) VALUES
-(1, 'DreamWorks Animation', 'Dessins Animés', 'img/ressources/dreamWorksLogo.png'),
-(2, 'Pixar', 'Dessins Animés', 'img/ressources/pixarLogo.png'),
-(3, 'Toei', 'Manga', 'img/ressources/toeiLogo.png'),
-(4, 'Disney', 'Dessins Animés', 'img/ressources/disneyLogo.png'),
-(5, 'Ankama', 'Dessins Animés', 'img/ressources/ankamaLogo.png');
+INSERT INTO `utilisateur` (`id`, `username`, `password`) VALUES
+(1, 'thomas', 'test123456'),
+(2, 'Badabouin', 'badaboum'),
+(3, 'Miana', '123456');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
