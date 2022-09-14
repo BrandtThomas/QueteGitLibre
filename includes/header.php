@@ -12,23 +12,37 @@
         <a href="?studio=dreamworks"><img src="img/ressources/dreamWorksLogo.png" height="40" alt="Logo DreamWorks"></a>
         </li>
         <li class="nav-item active mx-auto mx-md-3">
-        <a href="?studio=pixar"><img src="img/ressources/pixarLogo.png" height="40" alt="Logo DreamWorks"></a>
+        <a href="?studio=pixar"><img src="img/ressources/pixarLogo.png" height="40" alt="Logo Pixar"></a>
         </li>
         <li class="nav-item active mx-auto mx-md-3">
-        <a href="?studio=disney"><img src="img/ressources/disneyLogo.png" height="40" alt="Logo DreamWorks"></a>
+        <a href="?studio=disney"><img src="img/ressources/disneyLogo.png" height="40" alt="Logo Disney"></a>
         </li>
         <li class="nav-item active mx-auto mx-md-3">
-        <a href="?studio=ankama"><img src="img/ressources/ankamaLogo.png" height="40" alt="Logo DreamWorks"></a>
+        <a href="?studio=ankama"><img src="img/ressources/ankamaLogo.png" height="40" alt="Logo Ankama"></a>
         </li>
         <li class="nav-item active mx-auto mx-md-3">
-        <a href="?studio=toei"><img src="img/ressources/toeiLogo.png" height="40" alt="Logo DreamWorks"></a>
+        <a href="?studio=toei"><img src="img/ressources/toeiLogo.png" height="40" alt="Logo Toei"></a>
+        </li>
+        <li class="nav-item active mx-auto mx-md-3">
+        <a href="?studio=wb"><img src="img/ressources/wbLogo.png" height="40" alt="Logo Toei"></a>
         </li>
     </ul>
     <form method="GET" class="form-inline my-2 my-md-0">
         <input class="form-control" name="recherche" type="search" placeholder="Recherche">
+        <?php
+              
+              if (!empty($_SESSION)){ ?>
+                  <a href="?form=deconnexion"><button type="button" class="btn btn-outline-danger ml-3">Log out</button></a>
+              
+             <?php }
+      
+             else { ?>
+                  <a href="?form=login"><button type="button" class="btn btn-outline-info mx-3">Log in</button></a>
+             
+         <?php }
+          ?>
     </form>
-        <a href="?addFilm=addForm"><button type="button" class="btn btn-outline-info mx-3">Ajouter</button></a>
-    <!-- Le bouton login sera a faire après <button type="button" class="btn btn-outline-info mx-3">Log In</button> -->
+   
     </div>
     </nav>
 </header>

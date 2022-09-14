@@ -25,3 +25,8 @@ footer{
     height: 40px;
     opacity: 0.9;
 }
+
+.contour{
+    
+    text-shadow: 4px 4px 4px #000000;
+}

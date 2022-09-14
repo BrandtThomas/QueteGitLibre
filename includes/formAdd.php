@@ -18,35 +18,40 @@
         <input class="text col-8" type="text" name="lienRedirectionAdd" value="">
     </div>
 
-    <div class="row justify-content-center my-2">
-        <div class="form-check mx-2">
+    <div class="row justify-content-center my-2 col-12">
+        <div class="form-check mx-2 col-3">
             <input class="form-check-input" type="radio" name="nomStudioAdd" value="DreamWorks Animation">
             <label class="form-check-label  text-light">
             DreamWorks
             </label>
             </div>
-            <div class="form-check mx-2">
+            <div class="form-check mx-2 col-3">
             <input class="form-check-input" type="radio" name="nomStudioAdd"  value="Pixar">
             <label class="form-check-label  text-light">
             Pixar
             </label>
             </div>
-            <div class="form-check mx-2">
+            <div class="form-check mx-2 col-3">
             <input class="form-check-input" type="radio" name="nomStudioAdd"  value="Disney">
             <label class="form-check-label  text-light">
             Disney
             </label>
             </div>
-            <div class="form-check mx-2">
+            <div class="form-check mx-2 col-3">
             <input class="form-check-input" type="radio" name="nomStudioAdd"  value="Ankama">
             <label class="form-check-label  text-light">
             Ankama
             </label>
             </div>
-            <div class="form-check mx-2">
+            <div class="form-check mx-2 col-3">
             <input class="form-check-input" type="radio" name="nomStudioAdd"  value="Toei Animation">
             <label class="form-check-label  text-light">
             Toei Animation
+            </label>
+            <div class="form-check mx-2 col-3">
+            <input class="form-check-input" type="radio" name="nomStudioAdd"  value="Warner Bros">
+            <label class="form-check-label  text-light">
+            Warner Bros
             </label>
             </div>
     </div>
